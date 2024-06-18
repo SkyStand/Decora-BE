@@ -3,11 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
+    public function imageUpload(Request $req)
+    {
+        $postObj = new Product();
+
+        if ($req->hasFile('image')) {
+            $filename = $req->file('image')->getClientOriginalName();
+            $getfilenamewitoutext = pathinfo($filename, PATHINFO_FILENAME);
+            $getfileExtension = $req->file('image')->getClientOriginalExtension();
+            $createnewFileName = time() . '_' . str_replace(' ', '_', $getfilenamewitoutext) . '.' . $getfileExtension;
+            $img_path = $req->file('image')->storeAs('public/post_img', $createnewFileName);
+            $postObj->image = $createnewFileName;
+        }
+
+        if ($postObj->save()) { // save file in databse
+            return ['status' => true, 'message' => "Image uploded successfully"];
+        } else {
+            return ['status' => false, 'message' => "Error : Image not uploded successfully"];
+        }
+    }
     /**
      * Display a listing of the resource.
      */
