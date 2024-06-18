@@ -11,6 +11,6 @@ class Product extends Model
 
     public function variants()
     {
-        return $this->hasMany(Variant::class); // Corrected method name to plural 'variants'
+        return $this->hasMany(Variant::class); 
     }
 }

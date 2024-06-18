@@ -22,7 +22,7 @@ class VariantFactory extends Factory
             'image' => $this->faker->imageUrl(),
             'variant_name' => $this->faker->word(),
             'price' => $this->faker->randomFloat(2, 0, 9999.99),
-            'discount' => $this->faker->numberBetween(0, 100), // Changed to integer for discount
+            'discount' => $this->faker->numberBetween(0, 100),
             'qty' => $this->faker->numberBetween(1, 100),
         ];
     }
