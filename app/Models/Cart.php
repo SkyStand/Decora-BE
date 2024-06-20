@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    protected $fillable = ['variant_id', 'qty'];
+    protected $fillable = ['user_id', 'variant_id', 'qty'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function variant()
     {
