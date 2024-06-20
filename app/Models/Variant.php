@@ -14,5 +14,5 @@ class Variant extends Model
         return $this->belongsTo(Product::class);
     }
 
-    protected $fillable = ['image'];
+    protected $fillable = ['image', 'product_id', 'variant_name', 'price', 'diskon', 'qty'];
 }

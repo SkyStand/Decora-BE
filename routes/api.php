@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductVariantController;
 use App\Http\Middleware\JwtMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ Route::middleware(JwtMiddleware::class)->group(function () {
     });
     Route::post('/send-forget-password-email', [AuthController::class, 'sendForgetPasswordEmail']);
     Route::apiResource('/products', ProductController::class);
+    Route::apiResource('/products/variants', ProductVariantController::class);
 });
