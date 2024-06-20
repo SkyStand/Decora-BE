@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('variant_name');
             $table->integer('price');
-            $table->integer('discount');
+            $table->integer('diskon');
             $table->integer('qty');
             $table->timestamps();
 

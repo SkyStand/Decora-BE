@@ -22,6 +22,8 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(),
             'type' => $this->faker->word(),
             'category' => $this->faker->word(),
+            'style' => $this->faker->word(),
+
         ];
     }
 }

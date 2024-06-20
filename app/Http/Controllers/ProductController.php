@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductResource;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -23,26 +24,19 @@ class ProductController extends Controller
         }
 
         if ($postObj->save()) { // save file in databse
-            return ['status' => true, 'message' => "Image uploded successfully"];
+            return response()->json(['status' => true, 'message' => "Image uploaded successfully"]);
         } else {
-            return ['status' => false, 'message' => "Error : Image not uploded successfully"];
+            return response()->json(['status' => false, 'message' => "Error: Image not uploaded successfully"]);
         }
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $products = Product::with('variants')->latest()->get();
-        return response()->json($products);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return ProductResource::collection($products);
     }
 
     /**
@@ -50,6 +44,20 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $filename = $request->file('image')->getClientOriginalName();
+            $getfilenamewitoutext = pathinfo($filename, PATHINFO_FILENAME);
+            $getfileExtension = $request->file('image')->getClientOriginalExtension();
+            $createnewFileName = time() . '_' . str_replace(' ', '_', $getfilenamewitoutext) . '.' . $getfileExtension;
+            $img_path = $request->file('image')->storeAs('public/post_img', $createnewFileName);
+            $data['image'] = $createnewFileName;
+        }
+
+        $product = Product::create($data);
+
+        return new ProductResource($product);
     }
 
     /**
@@ -57,6 +65,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        return new ProductResource($product);
     }
 
     /**
