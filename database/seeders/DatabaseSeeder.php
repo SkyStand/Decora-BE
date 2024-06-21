@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\InteriorDesigner;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Product;
@@ -19,6 +20,6 @@ class DatabaseSeeder extends Seeder
 
         Product::factory(10)->create();
         Variant::factory(10)->create();
-
+        InteriorDesigner::factory(10)->create();
     }
 }
