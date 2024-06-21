@@ -14,5 +14,5 @@ class Product extends Model
         return $this->hasMany(Variant::class);
     }
 
-    protected $fillable = ['image', 'name', 'description', 'type', 'category', 'style'];
+    protected $fillable = ['image', 'name', 'description', 'type', 'category', 'style', 'berat', 'panjang_product', 'lebar_product', 'tinggi_product'];
 }

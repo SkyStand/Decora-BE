@@ -23,6 +23,11 @@ class ProductFactory extends Factory
             'type' => $this->faker->word(),
             'category' => $this->faker->word(),
             'style' => $this->faker->word(),
+            'berat' => $this->faker->numberBetween(1, 100),
+            'panjang_product' => $this->faker->numberBetween(1, 100),
+            'lebar_product' => $this->faker->numberBetween(1, 100),
+            'tinggi_product' => $this->faker->numberBetween(1, 100)
+
 
         ];
     }

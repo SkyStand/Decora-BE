@@ -28,6 +28,10 @@ class StoreProductRequest extends FormRequest
             'type' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'style' => 'required|string|max:255',
+            'berat' => 'requried|numeric',
+            'panjang_product' => 'requried|numeric',
+            'lebar_product' => 'required|numeric',
+            'tinggi_product' => 'required|numeric'
         ];
     }
 }

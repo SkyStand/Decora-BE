@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('type');
             $table->string('category');
             $table->string('style');
+            $table->double('berat');
+            $table->double('panjang_product');
+            $table->double('lebar_product');
+            $table->double('tinggi_product');
 
             $table->timestamps();
         });

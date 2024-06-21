@@ -23,6 +23,10 @@ class ProductResource extends JsonResource
             'type' => $this->type,
             'category' => $this->category,
             'style' => $this->style,
+            'berat' => $this->berat,
+            'panjang_product' => $this->panjang_product,
+            'lebar_product' => $this->lebar_product,
+            'tinggi_product' => $this->tinggi_product,
             'variants' => VariantResource::collection($this->whenLoaded('variants')),
         ];
     }
