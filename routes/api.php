@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\JwtMiddleware;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InteriorDesignerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductVariantController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\ProductVariantController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/image/{tipe}', [ImageController::class, 'get']);
 Route::middleware(JwtMiddleware::class)->group(function () {
     Route::post('/user', function () {
         return auth()->user();
