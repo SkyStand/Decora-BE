@@ -20,7 +20,7 @@ class InteriorDesignerController extends Controller
             $getfilenamewitoutext = pathinfo($filename, PATHINFO_FILENAME);
             $getfileExtension = $req->file('image')->getClientOriginalExtension();
             $createnewFileName = time() . '_' . str_replace(' ', '_', $getfilenamewitoutext) . '.' . $getfileExtension;
-            $img_path = $req->file('image')->storeAs('public/post_img', $createnewFileName);
+            $img_path = $req->file('image')->storeAs('public/interior_design', $createnewFileName);
             $postObj->image = $createnewFileName;
         }
 

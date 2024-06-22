@@ -22,6 +22,7 @@ Route::middleware(JwtMiddleware::class)->group(function () {
     });
     Route::post('/send-forget-password-email', [AuthController::class, 'sendForgetPasswordEmail']);
     Route::apiResource('/products', ProductController::class);
+    Route::put('/products/{product}', [ProductController::class, 'update']);
     Route::apiResource('/products/variants', ProductVariantController::class);
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart', [CartController::class, 'store']);

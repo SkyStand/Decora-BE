@@ -23,7 +23,7 @@ class ProductController extends Controller
             $postObj->image = $createnewFileName;
         }
 
-        if ($postObj->save()) { // save file in databse
+        if ($postObj->save()) {
             return response()->json(['status' => true, 'message' => "Image uploaded successfully"]);
         } else {
             return response()->json(['status' => false, 'message' => "Error: Image not uploaded successfully"]);
@@ -81,7 +81,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $validated = $request->validated();
+
+        $product->update($validated);
+
+        return response()->json($product);
     }
 
     /**
