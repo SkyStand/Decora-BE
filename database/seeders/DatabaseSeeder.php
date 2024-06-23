@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        Product::factory(10)->create();
+        // Product::factory(10)->create();
         Variant::factory(10)->create();
-        InteriorDesigner::factory(10)->create();
+        // InteriorDesigner::factory(10)->create();
     }
 }

@@ -65,6 +65,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product->load('variants'); // Eager load the variants relationship
         return new ProductResource($product);
     }
 
